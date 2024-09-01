@@ -1,0 +1,48 @@
+﻿@model Provjera.Models.ViewModel.ListTaskViewModel
+
+@{
+    ViewData["Title"] = "GetAllTasks";
+}
+
+<h1>Get All Tasks</h1>
+
+<p>
+    @Html.ActionLink("Add", "AddTask", new { toDoListId = Model.ToDoListId })
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+               Id
+            </th>
+            <th>
+                Status
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                ToDoListId
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.List) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ToDoListId)
+            </td>
+            <td>
+                @Html.ActionLink("Finished", "RegulateStatus", new { id=item.Id })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
